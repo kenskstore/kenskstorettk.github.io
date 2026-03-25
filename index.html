@@ -13,17 +13,26 @@
 <!-- ================= OVERLAY ================= -->
 
 <div id="overlay-tiktok" onclick="fecharSeFora(event)">
-  <div class="box">
-    <span class="fechar-x" onclick="continuarOverlay()">&times;</span>
-    <div class="emoji-alerta">🚨</div>
-    <h2>Abrir Navegador Externo</h2>
-    <p>Para ter uma experiência melhor abra nosso site em seu navegador externo.</p>
+    <div class="box">
+        <span class="fechar-x" onclick="continuarOverlay()">&times;</span>
+        <div class="emoji-alerta">🚨</div>
+        <h2>Experiência Melhor</h2>
+        <p>Para copiar os IDs e garantir seus descontos, saia do navegador do TikTok:</p>
 
-    <div class="buttons">
-      <button onclick="abrirFora()">Abrir Navegador</button>
-      <button onclick="continuarOverlay()">Continuar aqui</button>
+        <div class="tutorial-ios">
+            <div class="passo">
+                <span>1. Clique nos <b>(...)</b> ou <b>(⋮)</b> no topo</span>
+            </div>
+            <div class="passo">
+                <span>2. Selecione <b>"Abrir no Navegador"</b></span>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <button class="btn-principal" onclick="abrirFora()">Tentar Abrir Agora</button>
+            <button class="btn-link" onclick="continuarOverlay()">Continuar aqui mesmo</button>
+        </div>
     </div>
-  </div>
 </div>
 
 <div class="container">

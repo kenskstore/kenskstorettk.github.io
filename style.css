@@ -154,6 +154,46 @@ body {
     }
 }
 
+/* Estilização do Tutorial Plano B */
+.tutorial-ios {
+    background: rgba(255, 255, 255, 0.05); /* Fundo sutil */
+    border: 1px dashed #555; /* Bordinha tracejada profissional */
+    border-radius: 12px;
+    padding: 15px;
+    margin: 15px 0 25px 0;
+    text-align: left;
+}
+
+.passo {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: #eee;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.passo:last-child { margin-bottom: 0; }
+
+/* Ícone de check azul antes de cada passo */
+.passo::before {
+    content: "✓";
+    color: #0088ff;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* Deixa o texto em negrito mais visível */
+.passo b {
+    color: #0088ff;
+}
+
+/* Opcional: Esconde o tutorial no Android para não poluir */
+body.is-android .tutorial-ios {
+    display: none;
+}
+
 /* ================= CRONÔMETRO ================= */
 #cronometro {
     position: fixed;

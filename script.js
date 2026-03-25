@@ -35,10 +35,10 @@ function copiarID(codigo, botao) {
         .then(() => {
             const originalText = botao.innerText;
             botao.innerText = "Copiado! ✓";
-            botao.style.background = "#28a745"; // Fica verde ao copiar
+            botao.style.background = "#28a745"; 
             setTimeout(() => {
                 botao.innerText = originalText;
-                botao.style.background = ""; // Volta ao normal
+                botao.style.background = ""; 
             }, 1500);
         });
 }
@@ -46,8 +46,17 @@ function copiarID(codigo, botao) {
 // ================= OVERLAY =================
 window.addEventListener("DOMContentLoaded", () => {
     const overlay = document.getElementById("overlay-tiktok");
+    
+    // Verifica se já viu o overlay
     if (overlay && !localStorage.getItem("overlayVisto")) {
         overlay.classList.add("active");
+    }
+
+    // ADIÇÃO PLANO B: Detecta o sistema e adiciona classe no body
+    if (/Android/i.test(navigator.userAgent)) {
+        document.body.classList.add("is-android");
+    } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        document.body.classList.add("is-ios");
     }
 });
 
@@ -59,11 +68,11 @@ function continuarOverlay() {
     }
 }
 
-// ================= ABRIR NAVEGADOR (CONSERTADO) =================
+// ================= ABRIR NAVEGADOR (PLANO B) =================
 function abrirFora() {
     const url = window.location.href;
 
-    // Se for ANDROID (O seu já funciona bem, vamos manter a lógica do Intent)
+    // Se for ANDROID
     if (/Android/i.test(navigator.userAgent)) {
         let clean = url.replace(/^https?:\/\//, '');
         window.location.href = "intent://" + clean + "#Intent;scheme=https;end;";
@@ -71,24 +80,20 @@ function abrirFora() {
     } 
 
     // Se for IPHONE / TIKTOK / INSTAGRAM
-    // TRUQUE: O TikTok ignora window.open, mas reage a links com target _blank 
-    // disparados por um elemento real no DOM.
-    
     const link = document.createElement('a');
     link.href = url;
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
-    
-    // Força o sistema a entender que é uma navegação externa
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
 
-    // Feedback visual no botão para o usuário saber que funcionou
-    const btn = event.target;
-    if (btn && btn.tagName === 'BUTTON') {
-        btn.innerText = "Abrindo Safari...";
-        btn.style.background = "#222";
+    // Feedback visual focado no PLANO B (instruir o usuário)
+    const btn = document.querySelector(".btn-principal");
+    if (btn) {
+        btn.innerText = "Siga o passo 1 e 2 acima ↑";
+        btn.style.background = "#333";
+        btn.style.color = "#0088ff";
     }
 }
 
