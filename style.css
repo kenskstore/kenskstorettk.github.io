@@ -1,0 +1,285 @@
+/* ================= RESET GLOBAL ================= */
+* {
+    margin: 0;
+    padding: 7px;
+}
+
+/* ================= BODY ================= */
+body {
+    background-color: black;
+    font-family: sans-serif;
+    color: white;
+
+    
+}
+
+/* ================= CRONÔMETRO ================= */
+#cronometro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    background-color: #bb0b0b;
+    color: white;
+
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 0;
+
+    z-index: 9999;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-shadow: 1px 1px 2px black;
+
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+    display: flex;
+    flex-direction: column;  /* título em cima, tempo embaixo */
+    align-items: center;     /* centraliza horizontal */
+    gap: 1px;
+
+    font-size: 20px;
+    line-height: 3px;
+}
+
+/* Título do cronômetro */
+#cronometro .titulo {
+    font-size: 18px;
+    font-weight: bold;
+    color: yellow;
+    font-family: 'Arial Narrow';
+}
+
+/* ================= ANIMAÇÃO (PISCAR) ================= */
+@keyframes piscar {
+    0%, 50%, 100% { color: yellow; }
+    25%, 75% { color: white; }
+}
+
+.piscar {
+    animation: piscar 0.8s infinite;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* ================= HEADER / LOGO ================= */
+header img {
+    border-radius: 20px;
+    margin-top: 0px;
+    width: 310px;
+    height: 250px;
+}
+
+
+
+/* ================= PRODUTO ================= */
+.produto {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background-color: #e6f7ff;
+    color: #000;
+
+    padding: 15px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Imagem do produto */
+.produto img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* ================= LISTA ================= */
+ul {
+    margin-top: -32px;
+}
+
+/* Links dentro da lista */
+ul a {
+    background-color: #e6f7ff;
+    color: #000;
+
+    padding: 15px;
+    text-decoration: none;
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+
+    display: block;
+    border-radius: 5px;
+    border: 1px solid white;
+
+    /* Efeito de expansão */
+    overflow: hidden;
+    max-height: 50px;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+/* Estado expandido */
+ul a.expanded {
+    max-height: 200px;
+    padding: 30px;
+}
+
+/* Hover do produto */
+ul a:hover {
+    background-color: #e6f7ff;
+    color: #000;
+
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.1);
+}
+
+/* ================= BOTÃO ================= */
+button {
+    margin-left: 8px;
+    padding: 4px 10px;
+
+    font-size: 0.8em;
+    cursor: pointer;
+
+    border-radius: 6px;
+    border: none;
+
+    background: #222;
+    color: #fff;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #444;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* ================= ID DO PRODUTO ================= */
+/* (Observação: você declarou .codigo duas vezes — mantive as duas) */
+
+/* Primeira definição */
+.codigo {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+    color: #777;
+}
+
+/* ================= TEXTO DO ITEM ================= */
+
+li {
+    margin-bottom: 9px;
+    list-style: none;
+}
+
+li p {
+    display: flex;
+    justify-content: center; /* centraliza horizontal */
+    align-items: center;     /* alinha vertical */
+    gap: 8px;
+
+    margin: 0;
+    text-align: center;
+}
+
+li p strong {
+    display: inline;
+}
+
+/* ================= LOGO BOTÃO ================= */
+.btn-logo {
+    width: 120px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-logo:hover {
+    transform: scale(1.05);
+}
+
+/* ================= FOOTER ================= */
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Imagem do footer */
+footer img {
+    width: 25px;
+    height: 25px;
+    border-radius: 13px;
+}
+
+/* Links do footer */
+footer a {
+    text-decoration: none;
+}
+
+footer a:hover {
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.1);
+}
+
+/* Texto do footer */
+footer p {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* ================= BOTÃO SHEIN ================= */
+.btn-shein {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+
+    border-radius: 15px;
+
+    /* Animação */
+    animation: pulse 1.5s infinite;
+}
+
+/* Imagem dentro do botão */
+.btn-shein img {
+    width: 24px;
+    height: 24px;
+
+    display: block;
+    margin-right: -10px;
+}
+
+/* Animação pulse */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+/* ================= CONTAINER ================= */
+.container {
+    text-align: center;
+
+    width: 320px;
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
