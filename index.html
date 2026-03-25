@@ -6,134 +6,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KensK! Links</title>
     <link rel="stylesheet" href="style.css">
-  
 </head>
 
-
-
 <body>
-    
-      <!-- Overlay -->
-  <div id="overlay-tiktok">
-    <div class="box">
-      <h2>🌟 Experiência Melhor</h2>
-      <p>Abra no navegador externo para aproveitar melhor nosso site.</p>
-      <div class="buttons">
-        <button onclick="abrirFora()">Abrir Navegador</button>
-        <button onclick="continuarOverlay()">Continuar</button>
-      </div>
+
+<!-- ================= OVERLAY ================= -->
+
+<div id="overlay-tiktok" onclick="fecharSeFora(event)">
+  <div class="box">
+    <span class="fechar-x" onclick="continuarOverlay()">&times;</span>
+    <div class="emoji-alerta">🚨</div>
+    <h2>Abrir Navegador Externo</h2>
+    <p>Para ter uma experiência melhor abra nosso site em seu navegador externo.</p>
+
+    <div class="buttons">
+      <button onclick="abrirFora()">Abrir Navegador</button>
+      <button onclick="continuarOverlay()">Continuar aqui</button>
     </div>
   </div>
+</div>
 
-    <div class="container">
+<div class="container">
 
 <!-- ================= HEADER COM CRONÔMETRO ================= -->
 <header>
     <div id="cronometro">
-        <!-- Texto da oferta -->
         <span class="titulo">OFERTA LIMITADA</span>
-
-        <!-- Tempo do cronômetro -->
         <span id="tempo">10:00:00</span>
     </div>
-</header>
 
-<!-- ================= HEADER COM LOGO ================= -->
-<header>
-    <!-- Logo do site -->
     <img src="Images/KensK.png" alt="">
 </header>
 
 <!-- ================= LISTA DE PRODUTOS ================= -->
 <ul>
 
-        <!-- ===== PRODUTO 1 ===== -->
-        <li>
-            <p>
-                <!-- ID do produto -->
-                <strong>ID: XSJ9A96</strong>
+    <li>
+        <p>
+            <strong>ID: XSJ9A96</strong>
+            <button onclick="copiarID('XSJ9A96', this)">Copiar</button>
+        </p>
 
-                <!-- Botão para copiar ID -->
-                <button onclick="copiarID('XSJ9A96', this)">Copiar</button>
-            </p>
+        <a href="https://onelink.shein.com/33/5k1udt4j2pec" target="_blank" class="produto">
+            <img src="Images/Camisa Azul.png">
+            <span>Camisa do Brasil Azul 2026</span>
+        </a>
+    </li>
 
-            <!-- Link do produto -->
-            <a href="https://onelink.shein.com/33/5k1udt4j2pec" target="_blank" rel="noopener noreferrer" class="produto">
-                <img src="Images/Camisa Azul.png" alt="Camisa do Brasil Azul e Preto">
-                <span>Camisa do Brasil Azul 2026</span>
-            </a>
-        </li>
+    <li>
+        <p>
+            <strong>ID: 2469G44</strong>
+            <button onclick="copiarID('2469G44', this)">Copiar</button>
+        </p>
 
-        <!-- ===== PRODUTO 2 ===== -->
-        <li>
-            <p>
-                <strong>ID: 2469G44</strong>
-                <button onclick="copiarID('2469G44', this)">Copiar</button>
-            </p>
+        <a href="https://onelink.shein.com/33/5k1ug9wxiioa" target="_blank" class="produto">
+            <img src="Images/Camisa Amarela.png">
+            <span>Camisa do Brasil Amarela 2026</span>
+        </a>
+    </li>
 
-            <a href="https://onelink.shein.com/33/5k1ug9wxiioa" target="_blank" rel="noopener noreferrer" class="produto">
-                <img src="Images/Camisa Amarela.png" alt="Camisa do Brasil Amarela">
-                <span>Camisa do Brasil Amarela 2026</span>
-            </a>
-        </li>
+    <li>
+        <p>
+            <strong>ID: 23V5SRF</strong>
+            <button onclick="copiarID('23V5SRF', this)">Copiar</button>
+        </p>
 
-        <!-- ===== PRODUTO 3 ===== -->
-        <li>
-            <p>
-                <strong>ID: 23V5SRF</strong>
-                <button onclick="copiarID('23V5SRF', this)">Copiar</button>
-            </p>
+        <a href="https://onelink.shein.com/33/5k1ueyk6fuzc" target="_blank" class="produto">
+            <img src="Images/Cropped Brasil.png">
+            <span>Cropped do Brasil</span>
+        </a>
+    </li>
 
-            <a href="https://onelink.shein.com/33/5k1ueyk6fuzc" target="_blank" rel="noopener noreferrer" class="produto">
-                <img src="Images/Cropped Brasil.png" alt="Cropped do Brasil">
-                <span>Cropped do Brasil</span>
-            </a>
-        </li>
+    <li>
+        <p>
+            <strong>ID: GS7WH6R</strong>
+            <button onclick="copiarID('GS7WH6R', this)">Copiar</button>
+        </p>
 
-        <!-- ===== PRODUTO 4 ===== -->
-        <li>
-            <p>
-                <strong>ID: GS7WH6R</strong>
-                <button onclick="copiarID('GS7WH6R', this)">Copiar</button>
-            </p>
+        <a href="https://onelink.shein.com/33/5k31wxf9a2iq" target="_blank" class="produto">
+            <img src="Images/Camisa Retrô.png">
+            <span>Camisa do Brasil Amarela 2002</span>
+        </a>
+    </li>
 
-            <a href="https://onelink.shein.com/33/5k31wxf9a2iq" target="_blank" rel="noopener noreferrer" class="produto">
-                <img src="Images/Camisa Retrô.png" alt="Camisa do Brasil Amarela Retrô">
-                <span>Camisa do Brasil Amarela 2002</span>
-            </a>
-        </li>
+    <li>
+        <p>
+            <strong>ID: PH77VWR</strong>
+            <button onclick="copiarID('PH77VWR', this)">Copiar</button>
+        </p>
 
-                <!-- ===== PRODUTO 5 ===== -->
-        <li>
-            <p>
-                <strong>ID: PH77VWR</strong>
-                <button onclick="copiarID('PH77VWR', this)">Copiar</button>
-            </p>
-
-            <a href="https://onelink.shein.com/33/5k8wf99pts2l" target="_blank" rel="noopener noreferrer" class="produto">
-                <img src="Images/Camisa 1998.png" alt="Camisa do Brasil Amarela Retrô">
-                <span>Camisa do Brasil Amarela 1998</span>
-            </a>
-        </li>
+        <a href="https://onelink.shein.com/33/5k8wf99pts2l" target="_blank" class="produto">
+            <img src="Images/Camisa 1998.png">
+            <span>Camisa do Brasil Amarela 1998</span>
+        </a>
+    </li>
 
 </ul>
 
 <!-- ================= RODAPÉ ================= -->
 <footer>
-    
-    <!-- Instrução -->
     <p><strong>Cole o id na sua Shein</strong></p>
 
-    <!-- Botão para acessar a Shein -->
-    <a href="https://br.shein.com" target="_blank" rel="noopener noreferrer" class="btn-shein">
-        <img src="Images/icons8-ela-dentro-50.png" alt="Shein">
+    <a href="https://br.shein.com" target="_blank" class="btn-shein">
+        <img src="Images/icons8-ela-dentro-50.png">
         <span>SHEIN</span>
     </a>
-
 </footer>
-    </div>
 
-    <script src="script.js"></script>
+</div>
+
+<script src="script.js"></script>
 </body>
-
 </html>

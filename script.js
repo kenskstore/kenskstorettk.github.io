@@ -1,36 +1,43 @@
-let tempoRestante = 7 * 60 * 1000; // 10 minutos
+let tempoRestante = 7 * 60 * 1000; // 7 minutos
 let msVisual = 0;
 
 const timer = setInterval(() => {
     if (tempoRestante <= 0) {
         clearInterval(timer);
 
-        // Remove o título antigo
         const titulo = document.querySelector("#cronometro .titulo");
         if (titulo) titulo.remove();
 
-        // Atualiza o contador para a mensagem final
         const tempo = document.getElementById('tempo');
-        tempo.textContent = "OFERTA QUASE ESGOTADA!";
-        tempo.classList.add("piscar"); // adiciona a classe que faz piscar
+        if (tempo) {
+            tempo.textContent = "OFERTA QUASE ESGOTADA!";
+            tempo.classList.add("piscar");
+        }
+
         return;
     }
 
     let minutos = Math.floor(tempoRestante / 60000);
     let segundos = Math.floor((tempoRestante % 60000) / 1000);
 
-    minutos = minutos < 10 ? '0'+minutos : minutos;
-    segundos = segundos < 10 ? '0'+segundos : segundos;
+    minutos = minutos < 10 ? '0' + minutos : minutos;
+    segundos = segundos < 10 ? '0' + segundos : segundos;
 
     msVisual = (msVisual + 1) % 31;
-    let msText = msVisual < 10 ? '0'+msVisual : msVisual;
+    let msText = msVisual < 10 ? '0' + msVisual : msVisual;
 
-    document.getElementById('tempo').textContent = `${minutos}:${segundos}:${msText}`;
+    const tempoEl = document.getElementById('tempo');
+    if (tempoEl) {
+        tempoEl.textContent = `${minutos}:${segundos}:${msText}`;
+    }
 
     tempoRestante -= 33;
 }, 33);
 
+// ================= COPIAR ID =================
 function copiarID(codigo, botao) {
+    if (!navigator.clipboard) return;
+
     navigator.clipboard.writeText(codigo)
         .then(() => {
             botao.innerText = "Copiado!";
@@ -40,52 +47,43 @@ function copiarID(codigo, botao) {
         });
 }
 
-
-function continuarTikTok() {
-    const overlay = document.getElementById("overlay-tiktok");
-    if (overlay) overlay.style.display = "none";
-}
-
 // ================= OVERLAY =================
 window.addEventListener("DOMContentLoaded", () => {
-    mostrarOverlay(); // mostra o overlay assim que a página carrega
+  const overlay = document.getElementById("overlay-tiktok");
+
+  // só mostra se nunca viu
+  if (overlay && !localStorage.getItem("overlayVisto")) {
+    overlay.classList.add("active");
+  }
 });
 
-function mostrarOverlay() {
-    const overlay = document.getElementById("overlay-tiktok");
-    if (overlay) {
-        overlay.style.display = "flex";   // deixa visível
-        overlay.style.opacity = "1";      // garante transição suave
-    }
-}
-
+// CONTINUAR NO SITE
 function continuarOverlay() {
-    const overlay = document.getElementById("overlay-tiktok");
-    if (overlay) {
-        overlay.style.opacity = "0";      // fade out
-        setTimeout(() => {
-            overlay.style.display = "none"; // depois de sumir, retira do fluxo
-        }, 300); // tempo deve bater com a transição CSS
-    }
+  const overlay = document.getElementById("overlay-tiktok");
+
+  if (overlay) {
+    overlay.classList.remove("active");
+    localStorage.setItem("overlayVisto", "true");
+  }
 }
 
-// botão "Abrir navegador externo" (vai redirecionar e nem mostra o site)
+// ABRIR NAVEGADOR EXTERNO
 function abrirFora() {
-    const url = window.location.href;
-    if (/Android/i.test(navigator.userAgent)) {
-        let clean = url.replace(/^https?:\/\//, '');
-        window.location.href = "intent://" + clean + "#Intent;scheme=https;end;";
-    } else {
-        alert("Abra este site no navegador para a melhor experiência!");
-    }
+  const url = window.location.href;
+
+  if (/Android/i.test(navigator.userAgent)) {
+    let clean = url.replace(/^https?:\/\//, '');
+    window.location.href = "intent://" + clean + "#Intent;scheme=https;end;";
+  } else {
+    alert("Abra este site no navegador externo para melhor experiência!");
+  }
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-    const overlay = document.getElementById("overlay-tiktok");
-    if (overlay) overlay.classList.add("active");
-});
+// FECHAR CLICANDO FORA
+function fecharSeFora(event) {
+  const box = document.querySelector("#overlay-tiktok .box");
 
-function continuarOverlay() {
-    const overlay = document.getElementById("overlay-tiktok");
-    if (overlay) overlay.classList.remove("active");
+  if (box && !box.contains(event.target)) {
+    continuarOverlay();
+  }
 }
