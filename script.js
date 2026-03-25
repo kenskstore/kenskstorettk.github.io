@@ -47,22 +47,32 @@ function copiarID(codigo, botao) {
 window.addEventListener("DOMContentLoaded", () => {
     const overlay = document.getElementById("overlay-tiktok");
     
-    // Detecta se o navegador é o do TikTok
-    const isTikTok = /TikTok/i.test(navigator.userAgent);
+    // Captura a identidade do navegador
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
 
-    // Só mostra se for TikTok E se o usuário ainda não fechou nesta sessão
-    if (isTikTok && overlay && !localStorage.getItem("overlayVisto")) {
+    // Detecção ultra-robusta de navegadores internos (In-App Browsers)
+    // Verifica TikTok, Instagram, FB Messenger e outros
+    const isInApp = /TikTok|musical_ly|FBAN|FBAV|Instagram|Snapchat/i.test(ua);
+
+    // LOG PARA TESTE (Opcional): 
+    // Se você estiver com o celular no PC, isso ajuda a ver o que o site lê
+    console.log("Navegador detectado:", ua);
+
+    // Só mostra se for um App E se o usuário ainda não fechou
+    if (isInApp && overlay && !localStorage.getItem("overlayVisto")) {
         overlay.classList.add("active");
-        overlay.style.display = "flex"; // Garante que ele apareça
+        overlay.style.display = "flex"; 
     } else {
-        // Se não for TikTok, remove o overlay do caminho
-        if (overlay) overlay.remove(); 
+        // Se não for app, remove o overlay para não pesar a página
+        if (overlay && !overlay.classList.contains("active")) {
+            overlay.remove();
+        }
     }
 
-    // Detecta o sistema para o CSS (como fizemos antes)
-    if (/Android/i.test(navigator.userAgent)) {
+    // Detecta o sistema para o CSS
+    if (/Android/i.test(ua)) {
         document.body.classList.add("is-android");
-    } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    } else if (/iPhone|iPad|iPod/i.test(ua)) {
         document.body.classList.add("is-ios");
     }
 });
