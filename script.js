@@ -47,26 +47,25 @@ function copiarID(codigo, botao) {
 window.addEventListener("DOMContentLoaded", () => {
     const overlay = document.getElementById("overlay-tiktok");
     
-    // Verifica se já viu o overlay
-    if (overlay && !localStorage.getItem("overlayVisto")) {
+    // Detecta se o navegador é o do TikTok
+    const isTikTok = /TikTok/i.test(navigator.userAgent);
+
+    // Só mostra se for TikTok E se o usuário ainda não fechou nesta sessão
+    if (isTikTok && overlay && !localStorage.getItem("overlayVisto")) {
         overlay.classList.add("active");
+        overlay.style.display = "flex"; // Garante que ele apareça
+    } else {
+        // Se não for TikTok, remove o overlay do caminho
+        if (overlay) overlay.remove(); 
     }
 
-    // ADIÇÃO PLANO B: Detecta o sistema e adiciona classe no body
+    // Detecta o sistema para o CSS (como fizemos antes)
     if (/Android/i.test(navigator.userAgent)) {
         document.body.classList.add("is-android");
     } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
         document.body.classList.add("is-ios");
     }
 });
-
-function continuarOverlay() {
-    const overlay = document.getElementById("overlay-tiktok");
-    if (overlay) {
-        overlay.classList.remove("active");
-        localStorage.setItem("overlayVisto", "true");
-    }
-}
 
 // ================= ABRIR NAVEGADOR (PLANO B) =================
 function abrirFora() {
