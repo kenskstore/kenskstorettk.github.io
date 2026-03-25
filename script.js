@@ -63,25 +63,32 @@ function continuarOverlay() {
 function abrirFora() {
     const url = window.location.href;
 
-    // Se for ANDROID
+    // Se for ANDROID (O seu já funciona bem, vamos manter a lógica do Intent)
     if (/Android/i.test(navigator.userAgent)) {
         let clean = url.replace(/^https?:\/\//, '');
         window.location.href = "intent://" + clean + "#Intent;scheme=https;end;";
+        return;
     } 
-    // Se for IPHONE (iOS)
-    else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        // REMOVI O ALERT (que causava o erro visual)
-        // No iOS, a melhor forma é abrir a URL em uma nova aba
-        // Isso dispara a sugestão nativa de "Abrir no Safari" do Instagram/TikTok
-        window.open(url, '_blank');
-        
-        // Opcional: Avisar o usuário no próprio botão antes dele sumir
-        const btn = document.querySelector(".btn-principal"); // ajuste conforme sua classe
-        if(btn) btn.innerText = "Clique em 'Abrir' no topo ↑";
-    } 
-    // Outros casos
-    else {
-        window.open(url, '_blank');
+
+    // Se for IPHONE / TIKTOK / INSTAGRAM
+    // TRUQUE: O TikTok ignora window.open, mas reage a links com target _blank 
+    // disparados por um elemento real no DOM.
+    
+    const link = document.createElement('a');
+    link.href = url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    
+    // Força o sistema a entender que é uma navegação externa
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    // Feedback visual no botão para o usuário saber que funcionou
+    const btn = event.target;
+    if (btn && btn.tagName === 'BUTTON') {
+        btn.innerText = "Abrindo Safari...";
+        btn.style.background = "#222";
     }
 }
 
