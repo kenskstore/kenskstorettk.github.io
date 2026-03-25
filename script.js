@@ -39,3 +39,53 @@ function copiarID(codigo, botao) {
             }, 1500);
         });
 }
+
+
+function continuarTikTok() {
+    const overlay = document.getElementById("overlay-tiktok");
+    if (overlay) overlay.style.display = "none";
+}
+
+// ================= OVERLAY =================
+window.addEventListener("DOMContentLoaded", () => {
+    mostrarOverlay(); // mostra o overlay assim que a página carrega
+});
+
+function mostrarOverlay() {
+    const overlay = document.getElementById("overlay-tiktok");
+    if (overlay) {
+        overlay.style.display = "flex";   // deixa visível
+        overlay.style.opacity = "1";      // garante transição suave
+    }
+}
+
+function continuarOverlay() {
+    const overlay = document.getElementById("overlay-tiktok");
+    if (overlay) {
+        overlay.style.opacity = "0";      // fade out
+        setTimeout(() => {
+            overlay.style.display = "none"; // depois de sumir, retira do fluxo
+        }, 300); // tempo deve bater com a transição CSS
+    }
+}
+
+// botão "Abrir navegador externo" (vai redirecionar e nem mostra o site)
+function abrirFora() {
+    const url = window.location.href;
+    if (/Android/i.test(navigator.userAgent)) {
+        let clean = url.replace(/^https?:\/\//, '');
+        window.location.href = "intent://" + clean + "#Intent;scheme=https;end;";
+    } else {
+        alert("Abra este site no navegador para a melhor experiência!");
+    }
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+    const overlay = document.getElementById("overlay-tiktok");
+    if (overlay) overlay.classList.add("active");
+});
+
+function continuarOverlay() {
+    const overlay = document.getElementById("overlay-tiktok");
+    if (overlay) overlay.classList.remove("active");
+}
