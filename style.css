@@ -2,7 +2,7 @@
 * {
     margin: 0;
     padding: 7px;
-    box-sizing: border-box; /* Adicionado para evitar que o padding aumente o tamanho dos elementos */
+    box-sizing: border-box;
 }
 
 /* ================= BODY ================= */
@@ -68,31 +68,30 @@ body {
     margin-bottom: 30px;
 }
 
-/* BOTÕES */
+/* BOTÕES DO OVERLAY - AJUSTE CIRÚRGICO AQUI */
 #overlay-tiktok .buttons {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-#overlay-tiktok button {
+/* Mudei o seletor abaixo para afetar APENAS botões dentro do overlay */
+#overlay-tiktok .buttons button {
     width: 100%;
     padding: 14px;
     border-radius: 12px;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease; /* Suaviza a transição de cor e fundo */
+    transition: all 0.3s ease;
     border: none;
 }
 
-/* Botão Principal (Abrir Navegador) - SUA ESTÉTICA ORIGINAL */
-#overlay-tiktok button:first-child {
+/* Botão Principal do Overlay */
+#overlay-tiktok .buttons button:first-child {
     background: #0088ff;
     color: white;
     box-shadow: 0 4px 15px rgba(0, 136, 255, 0.3);
-    
-    /* Ajustes para o texto dos passos caber perfeitamente */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -100,13 +99,13 @@ body {
     line-height: 1.2;
 }
 
-#overlay-tiktok button:first-child:active {
+#overlay-tiktok .buttons button:first-child:active {
     transform: scale(0.96);
     background: #0077ee;
 }
 
-/* Botão Secundário (Continuar aqui) */
-#overlay-tiktok button:last-child {
+/* Botão Secundário do Overlay */
+#overlay-tiktok .buttons button:last-child {
     background: transparent;
     color: #777;
     font-size: 0.85rem;
@@ -145,7 +144,7 @@ body {
     100% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 0px rgba(255, 0, 0, 0)); }
 }
 
-/* TUTORIAL PONTILHADO (O BLOCO QUE APARECE) */
+/* TUTORIAL PONTILHADO */
 .tutorial-ios {
     background: rgba(255, 255, 255, 0.05);
     border: 1px dashed #555;
@@ -237,29 +236,57 @@ ul a {
     padding: 15px;
     text-decoration: none;
     font-family: sans-serif;
-    font-size: 20px;
-    display: block;
-    border-radius: 5px;
+    font-size: 18px; /* Ajustei levemente para caber melhor */
+    display: flex;    /* Mudado para flex para alinhar foto e texto lado a lado */
+    align-items: center;
+    gap: 15px;
+    border-radius: 12px;
     border: 1px solid white;
-    overflow: hidden;
-    max-height: 50px;
+    min-height: 80px; /* Em vez de max-height, usamos min-height para garantir que apareça */
     transition: all 0.3s ease;
+    margin-bottom: 10px;
+}
+
+/* Garante que a imagem dentro do link não fique gigante */
+ul a img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 ul a:hover {
     transform: scale(1.1);
 }
 
-/* FOOTER E ANIMAÇÕES EXTRAS */
+/* ================= BOTÃO SHEIN ================= */
 .btn-shein {
     display: inline-flex;
     align-items: center;
+    gap: 0;
+    border-radius: 50px;
+
     text-decoration: none;
     color: white;
     font-weight: bold;
-    border-radius: 15px;
+
+
+
+    /* Animação */
     animation: pulse 1.5s infinite;
 }
+
+/* Imagem dentro do botão */
+.btn-shein img {
+    width: 38px;
+    height: 38px;
+    border-radius: 16px;
+
+
+    display: block;
+    margin-right: -10px;
+}
+
 
 @keyframes pulse {
     0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.5); }
@@ -267,7 +294,7 @@ ul a:hover {
     100% { transform: scale(1); }
 }
 
-/* ANIMAÇÃO SHAKE (USADA NO BOTÃO AO CLICAR) */
+/* ANIMAÇÃO SHAKE */
 .shake-effect {
     animation: shake 0.4s ease-in-out;
 }
@@ -277,4 +304,16 @@ ul a:hover {
     25% { transform: translateX(4px); }
     50% { transform: translateX(-4px); }
     75% { transform: translateX(4px); }
+}
+
+/* GARANTIA DOS BOTÕES ORIGINAIS DO SITE */
+button {
+    padding: 4px 10px;
+    font-size: 0.8em;
+    cursor: pointer;
+    border-radius: 6px;
+    border: none;
+    background: #222;
+    color: #fff;
+    margin-left: 8px;
 }
