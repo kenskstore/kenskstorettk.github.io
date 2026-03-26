@@ -84,8 +84,16 @@ function abrirFora(event) {
     const btn = document.querySelector(".btn-principal");
 
     if (btn) {
-        // TROCA O TEXTO, MAS MANTÉM A ESTÉTICA AZUL E A SETA PARA CIMA
-        btn.innerHTML = "1. Clique nos (⋮) no topo <br> 2. 'Abrir no Navegador' ↑";
+        // TROCA O TEXTO, MANTENDO A SETA ↑
+        btn.innerHTML = "Siga o passo 1 e 2 acima ↑";
+        
+        // APLICA A ESTÉTICA QUE VOCÊ APROVOU NO CLIQUE:
+        btn.style.background = "#111"; // Fundo escuro
+        btn.style.color = "#0088ff";   // Texto azul destaque
+        btn.style.border = "1px solid #0088ff";
+        
+        // Adiciona a animação de balanço
+        btn.classList.add("shake-effect");
         
         // Impede que o botão fique "clicável" após mostrar o tutorial
         btn.style.pointerEvents = "none"; 
