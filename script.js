@@ -113,3 +113,16 @@ function fecharSeFora(event) {
         continuarOverlay();
     }
 }
+
+// Função para fechar o overlay (usada pelo X e pelo link de baixo)
+function fecharOverlay() {
+    const overlay = document.getElementById("overlay-tiktok");
+    if (overlay) {
+        overlay.classList.remove("active");
+    }
+}
+
+// Função específica para o link "Continuar aqui mesmo" (caso queira rastrear o clique depois)
+function continuarOverlay() {
+    fecharOverlay();
+}
