@@ -79,31 +79,19 @@ window.addEventListener("DOMContentLoaded", () => {
 
 // ================= ABRIR NAVEGADOR (PLANO B) =================
 function abrirFora(event) {
-    // 1. Impede qualquer comportamento padrão (como recarregar a página)
     if (event) event.preventDefault();
 
-    // 2. Seleciona o botão principal
     const btn = document.querySelector(".btn-principal");
 
     if (btn) {
-        // 3. Muda o texto do botão para o Passo 1 e 2
-        // Usamos \n para quebrar a linha se o seu CSS permitir (white-space: pre-wrap)
-        btn.innerHTML = "PASSO 1: Clique nos (⋮) no topo <br> PASSO 2: 'Abrir no Navegador'";
+        // TROCA O TEXTO, MAS MANTÉM A ESTÉTICA AZUL E A SETA PARA CIMA
+        btn.innerHTML = "1. Clique nos (⋮) no topo <br> 2. 'Abrir no Navegador' ↑";
         
-        // 4. Ajustes estéticos para o texto caber e ficar em destaque
-        btn.style.height = "auto";          // Ajusta a altura se o texto for grande
-        btn.style.padding = "15px 10px";    // Dá mais espaço interno
-        btn.style.fontSize = "0.85rem";     // Diminui um pouco a letra para caber tudo
-        btn.style.lineHeight = "1.4";       // Espaçamento entre as linhas do passo 1 e 2
-        btn.style.background = "#111";      // Fundo escuro para destacar o novo texto
-        btn.style.border = "2px solid #0088ff"; // Borda azul vibrante
-        btn.style.color = "#fff";
-        
-        // 5. Desativa o clique para o usuário não ficar apertando e resetando
+        // Impede que o botão fique "clicável" após mostrar o tutorial
         btn.style.pointerEvents = "none"; 
     }
 
-    // Opcional: Manter o Android automático porque lá funciona sem erro
+    // Mantém sua lógica original do Android
     if (/Android/i.test(navigator.userAgent)) {
         const url = window.location.href;
         let clean = url.replace(/^https?:\/\//, '');
